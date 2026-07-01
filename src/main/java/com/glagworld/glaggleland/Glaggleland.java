@@ -1,5 +1,10 @@
 package com.glagworld.glaggleland;
 
+import com.glagworld.glaggleland.entity.ModEntities;
+import com.glagworld.glaggleland.entity.client.giggler.GigglerRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -48,6 +53,7 @@ public class Glaggleland {
     @SuppressWarnings("unused")
     public Glaggleland(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        ModEntities.register(modEventBus);
 
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -57,4 +63,16 @@ public class Glaggleland {
     private void commonSetup(FMLCommonSetupEvent event) {
         LOGGER.info("Glaggleland common setup complete.");
     }
+
+    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            //ModItemProperties.addCustomItemProperties();
+
+            EntityRenderers.register(ModEntities.GIGGLER.get(), GigglerRenderer::new);
+
+        }
+    }
+
 }

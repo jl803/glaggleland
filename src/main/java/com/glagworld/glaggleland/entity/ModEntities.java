@@ -1,0 +1,27 @@
+package com.glagworld.glaggleland.entity;
+
+import com.glagworld.glaggleland.Glaggleland;
+import com.glagworld.glaggleland.entity.custom.GigglerEntity;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+public class ModEntities {
+
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
+            DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, Glaggleland.MODID);
+
+    public static final Supplier<EntityType<GigglerEntity>> GIGGLER =
+            ENTITY_TYPES.register("giggler", () -> EntityType.Builder.of(GigglerEntity::new, MobCategory.CREATURE)
+                    .sized(3f,3f).build("giggler"));
+
+    public static void register(IEventBus eventBus) {
+        ENTITY_TYPES.register(eventBus);
+    }
+
+}
+
