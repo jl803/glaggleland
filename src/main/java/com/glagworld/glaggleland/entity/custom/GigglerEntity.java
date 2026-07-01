@@ -15,7 +15,7 @@ public class GigglerEntity extends Mob {
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
-
+        super.defineSynchedData(builder);
     }
 
 

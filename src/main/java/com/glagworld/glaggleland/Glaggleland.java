@@ -74,6 +74,7 @@ public class Glaggleland {
     public Glaggleland(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        ModEntities.register(modEventBus);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
@@ -124,8 +125,8 @@ public class Glaggleland {
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
-        public void onClientSetup(FMLClientSetupEvent event) {
-            ModItemProperties.addCustomItemProperties();
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            //ModItemProperties.addCustomItemProperties();
 
             EntityRenderers.register(ModEntities.GIGGLER.get(), GigglerRenderer::new);
 

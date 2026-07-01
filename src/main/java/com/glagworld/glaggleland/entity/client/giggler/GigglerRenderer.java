@@ -14,8 +14,8 @@ public class GigglerRenderer extends MobRenderer<GigglerEntity, GigglerModel<Gig
     }
 
     @Override
-    public ResourceLocation getTextureLocation(GigglerEntity gigglerEntity) {
-        return ResourceLocation.fromNamespaceAndPath(Glaggleland.MODID, "textures/entity/giggler.png");
+    public ResourceLocation getTextureLocation(GigglerEntity entity) {
+        return ResourceLocation.fromNamespaceAndPath(Glaggleland.MODID, "textures/entity/giggler/giggler.png");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class GigglerRenderer extends MobRenderer<GigglerEntity, GigglerModel<Gig
         if(entity.isBaby()) {
             poseStack.scale(0.45f,0.45f,0.45f);
         } else {
-            poseStack.scale(1f,1f,1f);
+            poseStack.scale(3f,3f,3f);
         }
 
         super.render(entity,entityYaw,partialTicks,poseStack,buffer,packedLight);

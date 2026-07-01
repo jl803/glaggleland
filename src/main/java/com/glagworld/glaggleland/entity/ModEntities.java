@@ -17,7 +17,7 @@ public class ModEntities {
 
     public static final Supplier<EntityType<GigglerEntity>> GIGGLER =
             ENTITY_TYPES.register("giggler", () -> EntityType.Builder.of(GigglerEntity::new, MobCategory.CREATURE)
-                    .sized(0.75f,0.35f).build("giggler"));
+                    .sized(3f,3f).build("giggler"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
