@@ -1,13 +1,4 @@
 {
-  "itemGroup.glaggleland": "Example Mod Tab",
-  "block.glaggleland.example_block": "Example Block",
-  "item.glaggleland.example_item": "Example Item",
-
-  "glaggleland.configuration.title": "Glaggleland Configs",
-  "glaggleland.configuration.section.glaggleland.common.toml": "Glaggleland Configs",
-  "glaggleland.configuration.section.glaggleland.common.toml.title": "Glaggleland Configs",
-  "glaggleland.configuration.items": "Item List",
-  "glaggleland.configuration.logDirtBlock": "Log Dirt Block",
-  "glaggleland.configuration.magicNumberIntroduction": "Magic Number Text",
-  "glaggleland.configuration.magicNumber": "Magic Number"
+  "itemGroup.glaggleland": "Glaggleland",
+  "item.glaggleland.thorn_glognut": "Thorn Glognut"
 }
