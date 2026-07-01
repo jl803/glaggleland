@@ -23,7 +23,7 @@ public class GigglerRenderer extends MobRenderer<GigglerEntity, GigglerModel<Gig
         if(entity.isBaby()) {
             poseStack.scale(0.45f,0.45f,0.45f);
         } else {
-            poseStack.scale(3f,3f,3f);
+            poseStack.scale(4f,4f,4f);
         }
 
         super.render(entity,entityYaw,partialTicks,poseStack,buffer,packedLight);
