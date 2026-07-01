@@ -37,10 +37,11 @@ public class Glaggleland {
     // Items
     public static final DeferredHolder<Item, Item> THORN_GLOGNUT = 
         ITEMS.register("thorn_glognut", () -> new Item(new Item.Properties()
-            .food(new FoodProperties.Builder()
-            .nutrition(6)
-            .saturationModifier(0.6F)
-            .build()
+                .stacksTo(6)
+                .food(new FoodProperties.Builder()
+                        .nutrition(6)
+                        .saturationModifier(0.6F)
+                        .build()
             )
         ));
 
