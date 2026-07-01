@@ -1,5 +1,10 @@
 package com.glagworld.glaggleland;
 
+import com.glagworld.glaggleland.entity.ModEntities;
+import com.glagworld.glaggleland.entity.client.giggler.GigglerRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -30,6 +35,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Glaggleland.MODID)
@@ -114,4 +120,16 @@ public class Glaggleland {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
+
+    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public void onClientSetup(FMLClientSetupEvent event) {
+            ModItemProperties.addCustomItemProperties();
+
+            EntityRenderers.register(ModEntities.GIGGLER.get(), GigglerRenderer::new);
+
+        }
+    }
+
 }
