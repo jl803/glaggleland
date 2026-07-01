@@ -29,10 +29,12 @@ public class Glaggleland {
     public static final String MODID = "glaggleland";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    // Registries collect this mod's content before NeoForge adds it to the game.
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
+    // Items
     public static final DeferredHolder<Item, Item> THORN_GLOGNUT = 
         ITEMS.register("thorn_glognut", () -> new Item(new Item.Properties()
             .food(new FoodProperties.Builder()
@@ -42,6 +44,7 @@ public class Glaggleland {
             )
         ));
 
+    // Creative tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GLAGGLELAND_TAB = CREATIVE_MODE_TABS.register("glaggleland", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.glaggleland"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
@@ -53,6 +56,7 @@ public class Glaggleland {
 
     @SuppressWarnings("unused")
     public Glaggleland(IEventBus modEventBus, ModContainer modContainer) {
+        // Register startup hooks and mod content.
         modEventBus.addListener(this::commonSetup);
         ModEntities.register(modEventBus);
 
@@ -65,6 +69,7 @@ public class Glaggleland {
         LOGGER.info("Glaggleland common setup complete.");
     }
 
+    // Client-only setup, like entity renderers.
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
