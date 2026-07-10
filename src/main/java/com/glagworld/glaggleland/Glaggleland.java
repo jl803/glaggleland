@@ -3,6 +3,7 @@ package com.glagworld.glaggleland;
 import com.glagworld.glaggleland.entity.ModEntities;
 import com.glagworld.glaggleland.entity.client.giggler.GigglerRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
@@ -45,6 +46,14 @@ public class Glaggleland {
             )
         ));
 
+    public static final DeferredHolder<Item, Item> GIGGLER_SPAWN_EGG =
+            ITEMS.register("giggler_spawn_egg", () -> new SpawnEggItem(
+                    ModEntities.GIGGLER.get(),
+                    0xF7E65A,
+                    0xF7E65A,
+                    new Item.Properties()
+            ));
+
     // Creative tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GLAGGLELAND_TAB = CREATIVE_MODE_TABS.register("glaggleland", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.glaggleland"))
@@ -52,8 +61,11 @@ public class Glaggleland {
             .icon(() -> THORN_GLOGNUT.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(THORN_GLOGNUT.get());
+                output.accept(GIGGLER_SPAWN_EGG.get());
             })
             .build());
+
+
 
     @SuppressWarnings("unused")
     public Glaggleland(IEventBus modEventBus, ModContainer modContainer) {
